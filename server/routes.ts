@@ -107,7 +107,7 @@ export function registerRoutes(app: Express): Server {
       
       res.status(201).json(analysis);
     } catch (error) {
-      res.status(400).json({ message: "Analiz oluşturulamadı", error: error.message });
+      res.status(400).json({ message: "Analiz oluşturulamadı", error: error instanceof Error ? error.message : "Bilinmeyen hata" });
     }
   });
 
@@ -186,7 +186,7 @@ export function registerRoutes(app: Express): Server {
         message: "Analiz işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin."
       });
       
-      res.status(500).json({ message: "AI analizi başarısız oldu", error: error.message });
+      res.status(500).json({ message: "AI analizi başarısız oldu", error: error instanceof Error ? error.message : "Bilinmeyen hata" });
     }
   });
 
@@ -226,7 +226,7 @@ export function registerRoutes(app: Express): Server {
       });
     } catch (error) {
       console.error("AI Chat error:", error);
-      res.status(500).json({ message: "AI asistan yanıt veremedi", error: error.message });
+      res.status(500).json({ message: "AI asistan yanıt veremedi", error: error instanceof Error ? error.message : "Bilinmeyen hata" });
     }
   });
 

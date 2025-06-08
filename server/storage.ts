@@ -26,11 +26,11 @@ export interface IStorage {
   getRecentAlerts(limit?: number): Promise<Alert[]>;
   markAlertAsRead(id: number): Promise<void>;
   
-  sessionStore: session.SessionStore;
+  sessionStore: session.Store;
 }
 
 export class DatabaseStorage implements IStorage {
-  sessionStore: session.SessionStore;
+  sessionStore: session.Store;
 
   constructor() {
     this.sessionStore = new PostgresSessionStore({ 
