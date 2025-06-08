@@ -1,0 +1,67 @@
+🧠 Trendwyse – Yapay Zekâ Destekli Ürün Analiz ve Pazar Karar Sistemi (135 Modül)
+Trendwyse, Avrupa merkezli ürün tedarik ve e-ticaret karar süreçlerini optimize etmek amacıyla geliştirilmiş, GPT-4 ve DeepSeek tabanlı, modüler ve çok katmanlı bir analiz platformudur.
+
+🧩 Sistem Özeti:
+Toplam 135 uzmanlaşmış modül içerir
+
+Tüm modüller yapay zekâ ile analiz, tahmin, karar üretme ve raporlama işlevleri sunar
+
+Sistem; ürün seçimi, fiyatlandırma, tedarikçi skoru, uyumluluk kontrolleri, ROI hesaplama, karbon ayak izi, pazara giriş simülasyonları gibi alanlarda çalışır
+
+Tamamı modülerdir – her modül ayrı çalışır, ayrı sonuç üretir
+
+Rol tabanlı erişim: admin, analyst, support, intern gibi kullanıcı tiplerine göre yetkilendirme içerir
+
+🔧 Teknik Özellikler:
+🔌 OpenAI GPT-4 + DeepSeek AI ile çoklu analiz motoru
+
+💾 Veritabanı bağlantılı skor ve karar geçmişi
+
+📊 Skor görselleştirme + karşılaştırma panelleri
+
+📥 Otomatik PDF rapor üretimi
+
+🧭 Dinamik AI destekli öneri asistanları
+
+📈 Gerçek zamanlı alarm ve risk tespiti
+
+🧾 AB regülasyonlarına uygunluk kontrolleri (CE, EPR, RAPEX, GTIP, OSS vs.)
+
+🎯 Hedef:
+Yapay zekâ yardımıyla:
+
+Hangi ürün daha kârlı?
+
+Hangi tedarikçi güvenilir?
+
+AB uyumluluğu var mı?
+
+Ne zaman pazara girilmeli?
+
+Ürün viral olabilir mi?
+
+gibi kritik kararları saniyeler içinde aldıran bir dijital danışmanlık sistemidir.
+
+📂 Modül Grupları (Örnek):
+📥 Veri Toplama Katmanı (M001–M012)
+
+📊 Analiz Motoru (M013–M028)
+
+🤖 Otomasyonlar (M029–M040)
+
+📈 Pazar Zekâsı (M041–M052)
+
+🔬 Ürün Uyumu (M073–M092)
+
+🌍 Lojistik & Entegrasyon (M093–M112)
+
+🧾 Strateji & CEO Paneli (M113–M135)
+
+🏗️ Replit’te Geliştirilmiş ve Tamamlananlar:
+✅ M001 – AI Ürün Potansiyel Skoru: GPT destekli analiz, skorlama, veritabanı, PDF ve görsel tamamlandı
+
+⏳ M002 ve sonraki modüller roadmap’e göre sırayla devreye alınacaktır
+
+🧠 Sistem vizyonu:
+Trendwyse, geleneksel ürün seçimi süreçlerini yapay zekâya devrederek yüksek doğrulukta otomatik karar almayı, riskleri öngörmeyi ve global pazara akıllı uyum sağlamayı hedefler.
+
