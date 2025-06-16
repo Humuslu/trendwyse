@@ -1,4 +1,4 @@
-name: 🚀 Deploy to cPanel
+name: 🚀 Deploy to CPanel
 
 on:
   workflow_dispatch:
@@ -6,14 +6,18 @@ on:
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Get latest code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Upload to CPanel via FTP
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp.trendwyse.com
+          server: 89.47.113.156
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: /public_html/
+          protocol: ftp
+          port: 21
+          dangerous-clean-slate: false
