@@ -4,22 +4,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  ftp-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install dependencies and build
-        working-directory: client
-        run: |
-          npm install
-          npm run build
-
-      - name: Deploy to CPanel via FTP
+      - name: Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: client/dist
+          server-dir: /public_html/
+          local-dir: ./client
