@@ -1,7 +1,10 @@
 name: ftp-deploy
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main         # 👈 Otomatik deploy için eklendi
+  workflow_dispatch: # 👈 Manuel tetikleme yine aktif
 
 jobs:
   deploy:
@@ -9,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy via FTP
+      - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: /public_html/
-          local-dir: ./   # 📌 Replit projesi kökten deploy edilecek
+          server-dir: /public_html/     # 📌 CPanel dizini (root)
+          local-dir: ./                # 📌 Replit projenin kökü (client + server + shared)
