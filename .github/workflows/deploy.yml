@@ -6,18 +6,21 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Install dependencies (client)
         run: npm install
 
-      - name: Build project
+      - name: Build client
         run: npm run build
 
-      - name: Deploy via FTP
+      - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -25,5 +28,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          local-dir: ./dist
+          local-dir: client/dist
           server-dir: /public_html/
