@@ -1,20 +1,27 @@
 name: ftp-deploy
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  deploy:
+  ftp-deploy:
+    name: Deploy to CPanel
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Upload files via FTP
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
+          protocol: ftp
+          port: 21
           server-dir: /public_html/
-          local-dir: ./client
+          local-dir: ./client/
