@@ -8,24 +8,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: npm install
-        working-directory: ./client
 
-      - name: 🛠️ Build project
+      - name: Build project
         run: npm run build
-        working-directory: ./client
 
-      - name: 🚀 Deploy via FTP
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
           protocol: ftp
           port: 21
-          local-dir: ./client/dist
+          local-dir: ./dist
           server-dir: /public_html/
