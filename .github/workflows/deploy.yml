@@ -1,29 +1,43 @@
-- name: Install dependencies
-  run: npm install
+name: ftp-deploy
 
-- name: Build project
-  run: npm run build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-- name: Deploy via FTP
-  uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-  with:
-    server: ${{ secrets.FTP_SERVER }}
-    username: ${{ secrets.FTP_USERNAME }}
-    password: ${{ secrets.FTP_PASSWORD }}
-    protocol: ftp
-    port: 21
-    local-dir: ./dist/public/
-    server-dir: /public_html/
-    exclude: |
-      **/.git*
-      **/.git*/**
-      **/node_modules/**
-      **/src/**
-      **/server/**
-      **/shared/**
-      **/*.ts
-      **/*.tsx
-      **/package*.json
-      **/tsconfig.json
-      **/vite.config.ts
-      **/tailwind.config.ts
+jobs:
+  deploy:
+    name: 🚀 Deploy to CPanel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🏗️ Build frontend project
+        run: npm run build
+
+      - name: 🚀 Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: /public_html/
+          local-dir: ./dist/public/
+          exclude: |
+            **/.git*
+            **/node_modules/**
+            **/server/**
+            **/shared/**
+            **/src/**
+            **/*.ts
+            **/*.tsx
+            **/package*.json
+            **/tsconfig.json
+            **/vite.config.ts
+            **/tailwind.config.ts
