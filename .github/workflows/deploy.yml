@@ -21,5 +21,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: /public_html/     # 📌 CPanel dizini (root)
+          server-dir: /     # 📌 CPanel dizini (root)
           local-dir: ./                # 📌 Replit projenin kökü (client + server + shared)
