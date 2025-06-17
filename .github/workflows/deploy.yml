@@ -1,6 +1,9 @@
 name: ftp-deploy
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -9,14 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Deploy via FTP
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🏗️ Build frontend project
+        run: npm run build
+
+      - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           server-dir: /public_html/
-          local-dir: ./   # 📌 Replit projesi kökten deploy edilecek
+          local-dir: ./dist/public/
+          exclude: |
+            **/.git*
+            **/node_modules/**
+            **/server/**
+            **/shared/**
+            **/src/**
+            **/*.ts
+            **/*.tsx
+            **/package*.json
+            **/tsconfig.json
+            **/vite.config.ts
+            **/tailwind.config.ts
