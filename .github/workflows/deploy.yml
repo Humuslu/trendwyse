@@ -10,7 +10,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build project
+      - name: Install dependencies and build
+        working-directory: client
         run: |
           npm install
           npm run build
@@ -21,4 +22,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: dist
+          local-dir: client/dist
