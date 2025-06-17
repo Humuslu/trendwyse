@@ -3,8 +3,8 @@ name: ftp-deploy
 on:
   push:
     branches:
-      - main         # 👈 Otomatik deploy için eklendi
-  workflow_dispatch: # 👈 Manuel tetikleme yine aktif
+      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -15,11 +15,16 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
+      - name: 📁 Prepare temp upload folder
+        run: |
+          mkdir deploy-folder
+          cp -r client server shared package.json vite.config.ts tsconfig.json tailwind.config.ts postcss.config.js drizzle.config.ts deploy-folder/
+
       - name: 🚀 Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          server-dir: /public_html/     # 📌 CPanel dizini (root)
-          local-dir: ./                # 📌 Replit projenin kökü (client + server + shared)
+          server-dir: /public_html/
+          local-dir: ./deploy-folder/
